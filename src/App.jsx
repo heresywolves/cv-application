@@ -60,15 +60,52 @@ function Form({mode}) {
             <div className='personal-info-form-container'>
               <label htmlFor="nameField">Full name</label>
               <input type="text" id="nameField"/>
+              <label htmlFor="emailField">Email</label>
+              <input type="text" id="emailField"/>
+              <label htmlFor="phoneField">Phone number</label>
+              <input type="text" id="phoneField"/>
+              <label htmlFor="addressField">Address</label>
+              <input type="text" id="addressField"/>
             </div>
           }
           isOpen={true}
+        />
+        <Spoiler
+          name="Education"
+          content={<EducationList/>}
+          isOpen={false}
         />
       </form>
     )
   }
 
   return null; // Return null if the mode is not 'content' or 'layout'
+}
+
+
+const EducationList = () => {
+  const [educationEntries, setEducationEntries] = useState([
+    { school: 'Harvard', degree: 'Masters', start: '1994', end: '2001'},
+    { school: 'High School', degree: 'GED', start: '1981', end: '1994'},
+  ])
+
+  const handleChange = (index, event) => {
+
+  }
+
+  const renderEducationList = () => {
+    return educationEntries.map((entry, index) => ( 
+      <div key={"education-entry-" + index}>
+        <p>{entry.school}</p>
+      </div>
+    ));
+  }
+
+  return (
+    <div>
+      {renderEducationList()}
+    </div>
+  )
 }
 
 // Insures that the 'mode' prop is a required string. Will throw
