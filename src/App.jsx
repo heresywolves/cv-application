@@ -21,6 +21,22 @@ function App() {
   )
 }
 
+const Spoiler = ({ name, content, isOpen }) => {
+  const [isSpoilerVisible, setSpoilerVisible] = useState(isOpen);
+  const toggleSpoiler = () => {
+    setSpoilerVisible(!isSpoilerVisible);
+  }
+
+  return (
+    <div>
+      <button onClick={toggleSpoiler}>
+        {name}
+      </button>
+      {isSpoilerVisible && content}
+    </div>
+  )
+}
+
 function OptionModeButtons() {
   return (
     <div className='option-mode-button-container'>
@@ -38,10 +54,16 @@ function Form({mode}) {
   if (mode === 'content') {
     return (
       <form onSubmit={handleSubmit}>
-        <div className='personal-info-form-container'>
-          <label htmlFor="nameField">Full name</label>
-          <input type="text" id="nameField"/>
-        </div>
+        <Spoiler
+          name="Personal Information"
+          content={
+            <div className='personal-info-form-container'>
+              <label htmlFor="nameField">Full name</label>
+              <input type="text" id="nameField"/>
+            </div>
+          }
+          isOpen={true}
+        />
       </form>
     )
   }
