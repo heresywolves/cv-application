@@ -12,6 +12,16 @@ function App() {
   const [email, setEmail] = useState('tylerdurd@gmail.com');
   const [phone, setPhone] = useState('+1 888 888 8888');
   const [address, setAddress] = useState('London, UK');
+  const [educationList, setEducationList] = useState([
+    {
+      school: 'London City Univercity',
+      degree: 'Bachelors in Economics',
+      start: '08/2020',
+      end: 'present',
+      location: 'New York City, US',
+      id: 123
+    }
+  ])
   
   function handeSendForm(e) {
     e.preventDefault();
@@ -63,6 +73,21 @@ function App() {
           <p>Email: {email}</p>
           <p>Phone: {phone}</p>
           <p>Address: {address}</p>
+        </div>
+        <div className="preview-education">
+          <h2>Education</h2>
+          {educationList.map(
+            (item) => {
+              return (
+                <div className="education-entry" key={item.id}>
+                  <p>{item.start + ' - ' + item.end}</p>
+                  <p>{item.location}</p>
+                  <p>{item.school}</p>
+                  <p>{item.degree}</p>
+                </div>
+              )
+            }
+          )}
         </div>
       </div>
     </div>
