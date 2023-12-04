@@ -338,7 +338,7 @@ function App() {
           <p>{summary}</p>
         </div>
         <div className="preview-skills">
-          <h2>Skills</h2>
+          {skills.length > 0 && <h2>Skills</h2>}
           {skills.map((skill, index) => {
             return (<p key={index}>{skill}</p>)
           })}
