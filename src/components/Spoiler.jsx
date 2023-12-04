@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const Spoiler = ({ name, content, isOpen }) => {
   const [isSpoilerVisible, setSpoilerVisible] = useState(isOpen);
   const toggleSpoiler = () => {
