@@ -14,7 +14,7 @@ function App() {
   const [address, setAddress] = useState('London, UK');
   const [educationList, setEducationList] = useState([
     {
-      school: 'London City Univercity',
+      school: 'London City University',
       degree: 'Bachelors in Economics',
       start: '08/2020',
       end: 'present',
@@ -40,6 +40,19 @@ function App() {
     })
 
     setEducationList(newEducationList);
+  }
+
+  function handleAddEducation() {
+    const newEducationEntry = {
+      school: '',
+      degree: '',
+      start: '',
+      end: '',
+      location: '',
+      id: Date.now()
+    }
+
+    setEducationList((prevEducationList) => [...prevEducationList, newEducationEntry])
   }
   
   return (
@@ -122,6 +135,7 @@ function App() {
                 )
               }
             )}
+            <button onClick={handleAddEducation}>+ Add</button>
           </div>
         </form>
       </div>
