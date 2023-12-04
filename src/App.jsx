@@ -4,6 +4,7 @@ import PersonalDetailsInput from './components/PersonalDetailsInput';
 import SummaryAndSkillsInput from './components/SummaryAndSkillsInput';
 import EducationInput from './components/EducationInput';
 import ExperienceInput from './components/ExperienceInput';
+import PreviewPortfolio from './components/PreviewPortfolio';
 
 function App() {
   
@@ -197,64 +198,19 @@ function App() {
           <button className='clear-resume' onClick={handleClearAll}>Clear All</button>
         </form>
       </div>
-      <div className="preview-container">
-        <div className="preview-personal-info">
-          <h1>{name}</h1>
-          <p>Email: {email}</p>
-          <p>Phone: {phone}</p>
-          <p>Address: {address}</p>
-        </div>
-        <div className="preview-summary">
-          {summary != '' && <h2>Summary</h2>}
-          <p>{summary}</p>
-        </div>
-        <div className="preview-skills">
-          {skills.length > 0 && <h2>Skills</h2>}
-          {skills.map((skill, index) => {
-            return (<p key={index}>{skill}</p>)
-          })}
-        </div>
-        <div className="preview-education">
-          {educationList.length > 0 && <h2>Education</h2>}
-          {educationList.map(
-            (item) => {
-              return (
-                <div className="education-entry" key={item.id}>
-                  <p>{item.start + ' - ' + item.end}</p>
-                  <p>{item.location}</p>
-                  <p>{item.school}</p>
-                  <p>{item.degree}</p>
-                </div>
-              )
-            }
-          )}
-        </div>
-        <div className="preview-experience">
-          {experienceList.length > 0 && <h2>Experience</h2>}
-          {experienceList.map(
-            (item) => {
-              return (
-                <div className="experience-entry" key={item.id}>
-                  <p>{item.company}</p>
-                  <p>{item.position}</p>
-                  <p>{item.start + " - " + item.end}</p>
-                  <p>{item.location}</p>
-                  <p>{item.description}</p>
-                </div>
-              )
-            }
-          )}
-        </div>
-      </div>
+      <PreviewPortfolio
+        name={name}
+        email={email}
+        phone={phone}
+        address={address}
+        summary={summary}
+        skills={skills}
+        educationList={educationList}
+        experienceList={experienceList}
+      />
     </div>
   )
 }
-
-
-
-
-
-
 
 
 export default App
