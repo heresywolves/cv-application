@@ -53,7 +53,7 @@ function App() {
     }
   ])
   
-  function handeSendForm(e) {
+  function handelSendForm(e) {
     e.preventDefault();
   }
 
@@ -161,45 +161,17 @@ function App() {
   return (
     <div className="content-container">
       <div className="form-container">
-        <form onSubmit={handeSendForm}>
-          <div className="personal-details">
-            <Spoiler
-              name="Personal Details"
-              isOpen={true}
-              content={
-                <>
-                  <label htmlFor="nameInput">Full name</label>
-                  <input 
-                    value={name} 
-                    onChange={(e) => {setName(e.target.value)}} 
-                    type="text" 
-                    id="nameInput"
-                  />
-                  <label htmlFor="emailInput">Email</label>
-                  <input 
-                    value={email} 
-                    onChange={(e) => {setEmail(e.target.value)}} 
-                    type="text" 
-                    id="emailInput"
-                  />
-                  <label htmlFor="phoneInput">Phone number</label>
-                  <input 
-                    value={phone} 
-                    onChange={(e) => {setPhone(e.target.value)}} 
-                    type="text" 
-                    id="phoneInput"
-                  />
-                  <label htmlFor="addressInput">Address</label>
-                  <input 
-                    value={address} 
-                    onChange={(e) => {setAddress(e.target.value)}} 
-                    type="text" 
-                    id="addressInput"
-                  />
-                </>
-              }
-            />
-          </div>
+        <form onSubmit={handelSendForm}>
+          <PersonalDetailsInput
+            name={name}
+            setName={setName} 
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            address={address}
+            setAddress={setAddress}
+          />
           <div className="summary-and-skills">
             <Spoiler
               name="Summary and Skills"
@@ -430,6 +402,50 @@ function App() {
       </div>
     </div>
   )
+}
+
+function PersonalDetailsInput(props) {
+  return (
+    <div className="personal-details">
+      <Spoiler
+        name="Personal Details"
+        isOpen={true}
+        content={
+          <>
+            <label htmlFor="nameInput">Full name</label>
+            <input 
+              value={props.name} 
+              onChange={(e) => {props.setName(e.target.value)}} 
+              type="text" 
+              id="nameInput"
+            />
+            <label htmlFor="emailInput">Email</label>
+            <input 
+              value={props.email} 
+              onChange={(e) => {props.setEmail(e.target.value)}} 
+              type="text" 
+              id="emailInput"
+            />
+            <label htmlFor="phoneInput">Phone number</label>
+            <input 
+              value={props.phone} 
+              onChange={(e) => {props.setPhone(e.target.value)}} 
+              type="text" 
+              id="phoneInput"
+            />
+            <label htmlFor="addressInput">Address</label>
+            <input 
+              value={props.address} 
+              onChange={(e) => {props.setAddress(e.target.value)}} 
+              type="text" 
+              id="addressInput"
+            />
+          </>
+        }
+      />
+    </div>
+  )
+
 }
 
 
