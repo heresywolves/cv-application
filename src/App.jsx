@@ -149,6 +149,17 @@ function App() {
     newSkills.splice(index, 1);
     setSkills(newSkills);
   }
+
+  function handleClearAll() {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setAddress('');
+    setSummary('');
+    setSkills([]);
+    setEducationList([]);
+    setExperienceList([]);
+  }
   
   return (
     <div className="content-container">
@@ -324,6 +335,7 @@ function App() {
             )}
             <button onClick={handleAddExperience}>+ Add</button>
           </div>
+          <button className='clear-resume' onClick={handleClearAll}>Clear All</button>
         </form>
       </div>
       <div className="preview-container">
