@@ -12,6 +12,19 @@ function App() {
   const [email, setEmail] = useState('tylerdurd@gmail.com');
   const [phone, setPhone] = useState('+1 888 888 8888');
   const [address, setAddress] = useState('London, UK');
+  const [summary, setSummary] = useState('Versatile and detail-oriented UX/UI Designer with a proven track record of creating visually stunning and user-friendly digital experiences. With a passion for combining aesthetics and functionality, I bring a unique blend of creativity and technical proficiency to every project. Proficient in utilizing design tools and staying abreast of industry trends, I am committed to delivering compelling and intuitive designs that elevate user engagement. Adept at collaborating with cross-functional teams, I thrive in dynamic environments and take pride in turning complex problems into seamless, visually appealing solutions.');
+  const [skills, setSkills] = useState([
+    'User-Centric Design',
+    'Wireframing and Prototyping',
+    'Interaction Design',
+    'Visual Design',
+    'Responsive Web Design',
+    'Usability Testing',
+    'Design Thinking',
+    'Adobe Creative Suite (XD, Photoshop, Illustrator)',
+    'Figma and Sketch',
+    'HTML, CSS'
+  ]);
   const [educationList, setEducationList] = useState([
     {
       school: 'London City University',
@@ -75,6 +88,13 @@ function App() {
     })
 
     setExperienceList(newExperienceList);
+  }
+
+  function handleSkillChange(e) {
+    const index = +e.target.id.split(' ')[1];
+    const newSkills = [...skills];
+    newSkills[index] = e.target.value;
+    setSkills(newSkills);
   }
 
   function handleAddEducation() {
@@ -154,6 +174,30 @@ function App() {
               type="text" 
               id="addressInput"
             />
+          </div>
+          <div className="summary-and-skills">
+            <h4>Summary and Skills</h4>
+            <label htmlFor="summaryInput">Address</label>
+            <textarea 
+              rows="6"
+              value={summary} 
+              onChange={(e) => {setSummary(e.target.value)}} 
+              type="text" 
+              id="summaryInput"></textarea>
+            {skills.map(
+              (item, index) => {
+                return (
+                  <div key={index} className='skill-input'>
+                    <input 
+                      value={item} 
+                      onChange={handleSkillChange} 
+                      type="text" 
+                      id={'skill ' + index}
+                    />
+                  </div>
+                )
+              }
+            )}
           </div>
           <div className="education">
             <h4>Education</h4>
@@ -272,6 +316,16 @@ function App() {
           <p>Email: {email}</p>
           <p>Phone: {phone}</p>
           <p>Address: {address}</p>
+        </div>
+        <div className="preview-summary">
+          <h2>Summary</h2>
+          <p>{summary}</p>
+        </div>
+        <div className="preview-skills">
+          <h2>Skills</h2>
+          {skills.map((skill, index) => {
+            return (<p key={index}>{skill}</p>)
+          })}
         </div>
         <div className="preview-education">
           <h2>Education</h2>
