@@ -206,7 +206,6 @@ function App() {
               isOpen={false}
               content={
                 <>
-                  <h4>Summary and Skills</h4>
                   <label htmlFor="summaryInput">Summary</label>
                   <textarea 
                     rows="6"
@@ -233,129 +232,149 @@ function App() {
                       )
                     }
                   )}
+                  <button onClick={handleAddSkill}>+ Add</button>
                 </>
               }
             />
-            <button onClick={handleAddSkill}>+ Add</button>
           </div>
           <div className="education">
             <Spoiler
               name="Education"
               isOpen={false}
               content={
-                educationList.map(
-                  (item) => {
-                    return (
-                      <div key={item.id} className='education-entry-form'>
-                        <label htmlFor={'school-' + item.id}>School</label>
-                        <input 
-                          value={item.school} 
-                          onChange={handleEducationChange} 
-                          type="text" 
-                          id={'school-' + item.id}
+                <>
+                  {educationList.map(
+                    (item) => {
+                      return (
+                        <Spoiler
+                          key={item.id}
+                          name={(item.school === '') ? 'New School' : item.school}
+                          isOpen={false}
+                          content={
+                            <div key={item.id} className='education-entry-form'>
+                              <label htmlFor={'school-' + item.id}>School</label>
+                              <input 
+                                value={item.school} 
+                                onChange={handleEducationChange} 
+                                type="text" 
+                                id={'school-' + item.id}
+                              />
+                              <label htmlFor={'degree-' + item.id}>Degree</label>
+                              <input 
+                                value={item.degree} 
+                                onChange={handleEducationChange}
+                                type="text" 
+                                id={'degree-' + item.id}
+                              />
+                              <label htmlFor={'start-' + item.id}>Start Date</label>
+                              <input 
+                                value={item.start} 
+                                onChange={handleEducationChange}
+                                type="text" 
+                                id={'start-' + item.id}
+                              />
+                              <label htmlFor={'end-' + item.id}>End Date</label>
+                              <input 
+                                value={item.end} 
+                                onChange={handleEducationChange}
+                                type="text" 
+                                id={'end-' + item.id}
+                              />
+                              <label htmlFor={'location-' + item.id}>Location</label>
+                              <input 
+                                value={item.location} 
+                                onChange={handleEducationChange}
+                                type="text" 
+                                id={'location-' + item.id}
+                              />
+                              <button 
+                                className={"delete-entry " + item.id} 
+                                onClick={handleDeleteEducation}
+                              >Remove</button>
+                            </div>
+                          }
                         />
-                        <label htmlFor={'degree-' + item.id}>Degree</label>
-                        <input 
-                          value={item.degree} 
-                          onChange={handleEducationChange}
-                          type="text" 
-                          id={'degree-' + item.id}
-                        />
-                        <label htmlFor={'start-' + item.id}>Start Date</label>
-                        <input 
-                          value={item.start} 
-                          onChange={handleEducationChange}
-                          type="text" 
-                          id={'start-' + item.id}
-                        />
-                        <label htmlFor={'end-' + item.id}>End Date</label>
-                        <input 
-                          value={item.end} 
-                          onChange={handleEducationChange}
-                          type="text" 
-                          id={'end-' + item.id}
-                        />
-                        <label htmlFor={'location-' + item.id}>Location</label>
-                        <input 
-                          value={item.location} 
-                          onChange={handleEducationChange}
-                          type="text" 
-                          id={'location-' + item.id}
-                        />
-                        <button 
-                          className={"delete-entry " + item.id} 
-                          onClick={handleDeleteEducation}
-                        >Remove</button>
-                      </div>
+                      )
+                    }
                     )
                   }
-                )
+                  <button onClick={handleAddEducation}>+ Add</button>
+                </>
               }
             />
-            <button onClick={handleAddEducation}>+ Add</button>
           </div>
           <div className="experience">
             <Spoiler
               name="Experience"
               isOpen={false}
               content={
-                experienceList.map(
-                  (item) => {
-                    return (
-                      <div key={item.id} className='experience-entry-form'>
-                        <label htmlFor={'company-' + item.id}>Company Name</label>
-                        <input 
-                          value={item.company} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'company-' + item.id}
-                        />
-                        <label htmlFor={'position-' + item.id}>Company Name</label>
-                        <input 
-                          value={item.position} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'position-' + item.id}
-                        />
-                        <label htmlFor={'start-' + item.id}>Start Date</label>
-                        <input 
-                          value={item.start} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'start-' + item.id}
-                        />
-                        <label htmlFor={'end-' + item.id}>End Date</label>
-                        <input 
-                          value={item.end} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'end-' + item.id}
-                        />
-                        <label htmlFor={'location-' + item.id}>Location</label>
-                        <input 
-                          value={item.location} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'location-' + item.id}
-                        />
-                        <label htmlFor={'description-' + item.id}>Description</label>
-                        <input 
-                          value={item.description} 
-                          onChange={handleExperienceChange}
-                          type="text" 
-                          id={'description-' + item.id}
-                        />
-                        <button 
-                          className={"delete-entry " + item.id} 
-                          onClick={handleDeleteExperience}
-                        >Remove</button>
-                      </div>
+                <>
+                  {experienceList.map(
+                    (item) => {
+                      return (
+                        <Spoiler
+                          key={item.id}
+                          name={(item.company === '') ? 'New Company' : item.company}
+                          isOpen={false}
+                          content={
+                            <div key={item.id} className='experience-entry-form'>
+                              <label htmlFor={'company-' + item.id}>Company Name</label>
+                              <input 
+                                value={item.company} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'company-' + item.id}
+                              />
+                              <label htmlFor={'position-' + item.id}>Company Name</label>
+                              <input 
+                                value={item.position} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'position-' + item.id}
+                              />
+                              <label htmlFor={'start-' + item.id}>Start Date</label>
+                              <input 
+                                value={item.start} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'start-' + item.id}
+                              />
+                              <label htmlFor={'end-' + item.id}>End Date</label>
+                              <input 
+                                value={item.end} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'end-' + item.id}
+                              />
+                              <label htmlFor={'location-' + item.id}>Location</label>
+                              <input 
+                                value={item.location} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'location-' + item.id}
+                              />
+                              <label htmlFor={'description-' + item.id}>Description</label>
+                              <input 
+                                value={item.description} 
+                                onChange={handleExperienceChange}
+                                type="text" 
+                                id={'description-' + item.id}
+                              />
+                              <button 
+                                className={"delete-entry " + item.id} 
+                                onClick={handleDeleteExperience}
+                              >Remove</button>
+                            </div>
+                          }
+                          />
+                          )
+                      }
                     )
                   }
-                )
-              }
+                  <button onClick={handleAddExperience}>+ Add</button>
+                </>    
+              }  
             />
-            <button onClick={handleAddExperience}>+ Add</button>
           </div>
           <button className='clear-resume' onClick={handleClearAll}>Clear All</button>
         </form>
