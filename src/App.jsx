@@ -26,12 +26,28 @@ function App() {
   function handeSendForm(e) {
     e.preventDefault();
   }
+
+  function handleEducationChange(e) {
+    const targetId = +e.target.id.split('-')[1];
+    const inputKey = e.target.id.split('-')[0];
+
+    const newEducationList = educationList.map((entry) => {
+      if (entry.id === targetId) {
+        // return the same entry but with the edited key value pair. inputKey is passed in as input id
+        return { ...entry, [inputKey]: e.target.value }
+      }
+      return entry
+    })
+
+    setEducationList(newEducationList);
+  }
   
   return (
     <div className="content-container">
       <div className="form-container">
         <form onSubmit={handeSendForm}>
           <div className="personal-details">
+            <h4>Personal Details</h4>
             <label htmlFor="nameInput">Full name</label>
             <input 
               value={name} 
@@ -62,8 +78,50 @@ function App() {
             />
           </div>
           <div className="education">
-            {/* <EducationForm/> */}
-            {/* <button onClick={AddEducationForm}>+ Add</button> */}
+            <h4>Education</h4>
+            {educationList.map(
+              (item) => {
+                return (
+                  <div key={item.id} className='education-entry-form'>
+                    <label htmlFor={'school-' + item.id}>School</label>
+                    <input 
+                      value={item.school} 
+                      onChange={handleEducationChange} 
+                      type="text" 
+                      id={'school-' + item.id}
+                    />
+                    <label htmlFor={'degree-' + item.id}>Degree</label>
+                    <input 
+                      value={item.degree} 
+                      onChange={handleEducationChange}
+                      type="text" 
+                      id={'degree-' + item.id}
+                    />
+                    <label htmlFor={'start-' + item.id}>Start</label>
+                    <input 
+                      value={item.start} 
+                      onChange={handleEducationChange}
+                      type="text" 
+                      id={'start-' + item.id}
+                    />
+                    <label htmlFor={'end-' + item.id}>End</label>
+                    <input 
+                      value={item.end} 
+                      onChange={handleEducationChange}
+                      type="text" 
+                      id={'end-' + item.id}
+                    />
+                    <label htmlFor={'location-' + item.id}>Location</label>
+                    <input 
+                      value={item.location} 
+                      onChange={handleEducationChange}
+                      type="text" 
+                      id={'location-' + item.id}
+                    />
+                  </div>
+                )
+              }
+            )}
           </div>
         </form>
       </div>
@@ -93,40 +151,6 @@ function App() {
     </div>
   )
 }
-
-// function EducationForm() {
-//   return (
-//     <div className="education-block">
-//       <label htmlFor="schoolInput">School</label>
-//       <input type="text" id="schoolInput"/>
-//       <label htmlFor="degreeInput">Degree</label>
-//       <input type="text" id="degreeInput"/>
-//       <label htmlFor="startInput">Start Date</label>
-//       <input type="text" id="startInput"/>
-//       <label htmlFor="endInput">End Date</label>
-//       <input type="text" id="endInput"/>
-//       <label htmlFor="locationInput">Location</label>
-//       <input type="text" id="locationInput"/>
-//     </div>
-//   )
-// }
-
-//   function AddEducationForm() {
-//     return (
-//       <div className="education-block">
-//         <label htmlFor="schoolInput">School</label>
-//         <input type="text" id="schoolInput"/>
-//         <label htmlFor="degreeInput">Degree</label>
-//         <input type="text" id="degreeInput"/>
-//         <label htmlFor="startInput">Start Date</label>
-//         <input type="text" id="startInput"/>
-//         <label htmlFor="endInput">End Date</label>
-//         <input type="text" id="endInput"/>
-//         <label htmlFor="locationInput">Location</label>
-//         <input type="text" id="locationInput"/>
-//       </div>
-//     )
-//   }
 
 
 export default App
