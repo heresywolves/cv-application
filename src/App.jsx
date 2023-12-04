@@ -54,6 +54,14 @@ function App() {
 
     setEducationList((prevEducationList) => [...prevEducationList, newEducationEntry])
   }
+
+  function handleDeleteEntry(e) {
+    const targetId = +e.target.className.split(' ')[1];
+    const newEducationList = educationList.filter((entry) => {
+      return (entry.id !== targetId)
+    })
+    setEducationList(newEducationList);
+  }
   
   return (
     <div className="content-container">
@@ -131,6 +139,10 @@ function App() {
                       type="text" 
                       id={'location-' + item.id}
                     />
+                    <button 
+                      className={"delete-entry " + item.id} 
+                      onClick={handleDeleteEntry}
+                    >Remove</button>
                   </div>
                 )
               }
