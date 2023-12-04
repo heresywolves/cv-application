@@ -22,6 +22,26 @@ function App() {
       id: 123
     }
   ])
+  const [experienceList, setExperienceList] = useState([
+    {
+      company: 'Umbrella Inc.',
+      position: 'UX & UI Designer',
+      start: '08/2020',
+      end: 'present',
+      location: 'New York City, US',
+      description: 'Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and Android.',
+      id: 123
+    },
+    {
+      company: 'Black Mesa Labs',
+      position: 'UX Research Assistant',
+      start: '04/2018',
+      end: '02/2019',
+      location: 'Berlin, Germany',
+      description: 'Supported senior researchers on accessibility standards for the open web. Created and usability tested wireframes and prototypes. Produced interactive documentation for quick onboarding of new researchers.',
+      id: 124
+    }
+  ])
   
   function handeSendForm(e) {
     e.preventDefault();
@@ -42,6 +62,21 @@ function App() {
     setEducationList(newEducationList);
   }
 
+  function handleExperienceChange(e) {
+    const targetId = +e.target.id.split('-')[1];
+    const inputKey = e.target.id.split('-')[0];
+
+    const newExperienceList = experienceList.map((entry) => {
+      if (entry.id === targetId) {
+        // return the same entry but with the edited key value pair. inputKey is passed in as input id
+        return { ...entry, [inputKey]: e.target.value }
+      }
+      return entry
+    })
+
+    setExperienceList(newExperienceList);
+  }
+
   function handleAddEducation() {
     const newEducationEntry = {
       school: '',
@@ -53,6 +88,20 @@ function App() {
     }
 
     setEducationList((prevEducationList) => [...prevEducationList, newEducationEntry])
+  }
+
+  function handleAddExperience() {
+    const newExperienceEntry = {
+      company: '',
+      position: '',
+      start: '',
+      end: '',
+      location: '',
+      description: '',
+      id: Date.now()
+    }
+
+    setExperienceList((prevExperienceList) => [...prevExperienceList, newExperienceEntry])
   }
 
   function handleDeleteEntry(e) {
@@ -118,14 +167,14 @@ function App() {
                       type="text" 
                       id={'degree-' + item.id}
                     />
-                    <label htmlFor={'start-' + item.id}>Start</label>
+                    <label htmlFor={'start-' + item.id}>Start Date</label>
                     <input 
                       value={item.start} 
                       onChange={handleEducationChange}
                       type="text" 
                       id={'start-' + item.id}
                     />
-                    <label htmlFor={'end-' + item.id}>End</label>
+                    <label htmlFor={'end-' + item.id}>End Date</label>
                     <input 
                       value={item.end} 
                       onChange={handleEducationChange}
@@ -149,6 +198,60 @@ function App() {
             )}
             <button onClick={handleAddEducation}>+ Add</button>
           </div>
+          <div className="experience">
+            <h4>Experience</h4>
+            {experienceList.map(
+              (item) => {
+                return (
+                  <div key={item.id} className='experience-entry-form'>
+                    <label htmlFor={'company-' + item.id}>Company Name</label>
+                    <input 
+                      value={item.company} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'company-' + item.id}
+                    />
+                    <label htmlFor={'position-' + item.id}>Company Name</label>
+                    <input 
+                      value={item.position} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'position-' + item.id}
+                    />
+                    <label htmlFor={'start-' + item.id}>Start Date</label>
+                    <input 
+                      value={item.start} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'start-' + item.id}
+                    />
+                    <label htmlFor={'end-' + item.id}>End Date</label>
+                    <input 
+                      value={item.end} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'end-' + item.id}
+                    />
+                    <label htmlFor={'location-' + item.id}>Location</label>
+                    <input 
+                      value={item.location} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'location-' + item.id}
+                    />
+                    <label htmlFor={'description-' + item.id}>Description</label>
+                    <input 
+                      value={item.description} 
+                      onChange={handleExperienceChange}
+                      type="text" 
+                      id={'description-' + item.id}
+                    />
+                  </div>
+                )
+              }
+            )}
+            <button onClick={handleAddExperience}>+ Add</button>
+          </div>
         </form>
       </div>
       <div className="preview-container">
@@ -168,6 +271,22 @@ function App() {
                   <p>{item.location}</p>
                   <p>{item.school}</p>
                   <p>{item.degree}</p>
+                </div>
+              )
+            }
+          )}
+        </div>
+        <div className="preview-experience">
+          <h2>Experience</h2>
+          {experienceList.map(
+            (item) => {
+              return (
+                <div className="experience-entry" key={item.id}>
+                  <p>{item.company}</p>
+                  <p>{item.position}</p>
+                  <p>{item.start + " - " + item.end}</p>
+                  <p>{item.location}</p>
+                  <p>{item.description}</p>
                 </div>
               )
             }
