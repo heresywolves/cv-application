@@ -104,12 +104,20 @@ function App() {
     setExperienceList((prevExperienceList) => [...prevExperienceList, newExperienceEntry])
   }
 
-  function handleDeleteEntry(e) {
+  function handleDeleteEducation(e) {
     const targetId = +e.target.className.split(' ')[1];
     const newEducationList = educationList.filter((entry) => {
       return (entry.id !== targetId)
     })
     setEducationList(newEducationList);
+  }
+
+  function handleDeleteExperience(e) {
+    const targetId = +e.target.className.split(' ')[1];
+    const newExperienceList = experienceList.filter((entry) => {
+      return (entry.id !== targetId)
+    })
+    setExperienceList(newExperienceList);
   }
   
   return (
@@ -190,7 +198,7 @@ function App() {
                     />
                     <button 
                       className={"delete-entry " + item.id} 
-                      onClick={handleDeleteEntry}
+                      onClick={handleDeleteEducation}
                     >Remove</button>
                   </div>
                 )
@@ -246,6 +254,10 @@ function App() {
                       type="text" 
                       id={'description-' + item.id}
                     />
+                    <button 
+                      className={"delete-entry " + item.id} 
+                      onClick={handleDeleteExperience}
+                    >Remove</button>
                   </div>
                 )
               }
