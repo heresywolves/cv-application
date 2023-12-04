@@ -91,7 +91,7 @@ function App() {
   }
 
   function handleSkillChange(e) {
-    const index = +e.target.id.split(' ')[1];
+    const index = +e.target.id.split('-')[1];
     const newSkills = [...skills];
     newSkills[index] = e.target.value;
     setSkills(newSkills);
@@ -124,6 +124,10 @@ function App() {
     setExperienceList((prevExperienceList) => [...prevExperienceList, newExperienceEntry])
   }
 
+  function handleAddSkill() {
+    setSkills([...skills, ''])
+  }
+
   function handleDeleteEducation(e) {
     const targetId = +e.target.className.split(' ')[1];
     const newEducationList = educationList.filter((entry) => {
@@ -138,6 +142,12 @@ function App() {
       return (entry.id !== targetId)
     })
     setExperienceList(newExperienceList);
+  }
+
+  function handleDeleteSkill(index) {
+    const newSkills = [...skills];
+    newSkills.splice(index, 1);
+    setSkills(newSkills);
   }
   
   return (
@@ -177,13 +187,14 @@ function App() {
           </div>
           <div className="summary-and-skills">
             <h4>Summary and Skills</h4>
-            <label htmlFor="summaryInput">Address</label>
+            <label htmlFor="summaryInput">Summary</label>
             <textarea 
               rows="6"
               value={summary} 
               onChange={(e) => {setSummary(e.target.value)}} 
               type="text" 
               id="summaryInput"></textarea>
+            <label>Skills</label>
             {skills.map(
               (item, index) => {
                 return (
@@ -192,12 +203,17 @@ function App() {
                       value={item} 
                       onChange={handleSkillChange} 
                       type="text" 
-                      id={'skill ' + index}
+                      id={'skill-' + index}
                     />
+                    <button 
+                      className='remove-skill'
+                      onClick={() => handleDeleteSkill(index)}
+                      >Remove</button>
                   </div>
                 )
               }
             )}
+            <button onClick={handleAddSkill}>+ Add</button>
           </div>
           <div className="education">
             <h4>Education</h4>
