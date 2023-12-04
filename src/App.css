@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0 ;
+  box-sizing: border-box;
 }
 
 .content-container {
@@ -13,14 +14,13 @@
   grid-template-columns: minmax(300px, 1fr) minmax(600px, 2fr);
   padding: 30px;
   gap: 20px;
+}
 
 .form-container, .preview-container {
   background-color: brown;
 }
 
-.option-mode-button-container {
-  background-color: aliceblue;
-  display: flex;
-  padding: 20px;
-  justify-content: space-between;
+.form-container label, .form-container input {
+  display: block;
+  width: 100%;
 }
