@@ -1,5 +1,6 @@
 import Spoiler from "./Spoiler"
 import PropTypes from 'prop-types';
+import crossImg from "../assets/cross.svg"
 
 function SummaryAndSkillsInput(props) {
   return (
@@ -30,12 +31,12 @@ function SummaryAndSkillsInput(props) {
                     <button 
                       className='remove-skill'
                       onClick={() => props.handleDeleteSkill(index)}
-                      >Remove</button>
+                      ><img src={crossImg} width={20} alt="" /></button>
                   </div>
                 )
               }
             )}
-            <button onClick={props.handleAddSkill}>+ Add</button>
+            <button className="add-entry-button" onClick={props.handleAddSkill}>+ Add</button>
           </>
         }
       />

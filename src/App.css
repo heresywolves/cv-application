@@ -11,7 +11,7 @@
   height: 100vh;
   background-color: rgb(248, 248, 248);
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) 700px;
+  grid-template-columns: minmax(300px, 450px) 700px;
   padding: 30px;
   gap: 20px;
 }
@@ -137,4 +137,174 @@
   border-radius: 10px;
 }
 
+.form-container button {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
 
+.form-container input {
+  outline: none !important;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  padding: 0px 5px;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  color: rgb(44, 44, 44);
+  margin-bottom: 20px;
+  max-width: 400px;
+} 
+
+.form-container input:focus {
+  border: solid 1px blue;
+}
+
+.form-container label{
+  font-size: 14px;
+}
+
+.spoiler .arrow {
+ transition: 0.3s ease;
+}
+
+.spoiler {
+  overflow: hidden;
+  transition: max-height 1s ease;
+}
+
+.spoiler button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-wrapper {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 1s ease;
+  padding: 0px 15px;
+}
+
+.spoiler.opened button {
+  background-color:#e1e1e1;
+}
+
+.spoiler.opened .content-wrapper {
+  max-height: 2000px;
+}
+
+.form-container textarea{
+  font-family: inter, system-ui, avenir, helvetica, arial, sans-serif ;
+  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  color: rgb(44, 44, 44);
+  background-color: #f4f4f4;
+  padding: 0px 5px;
+  font-size: 16px;
+}
+
+.form-container textarea:focus{
+  outline: none;
+  border: solid 1px blue;
+}
+
+.skill-input {
+  display: flex;
+  gap: 10px;
+}
+
+.skill-input button {
+  background-color: #f6f4f4 !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.skill-input button:hover {
+  background-color: #ededed !important;
+}
+
+.summary-and-skills label {
+  margin-bottom: 20px;
+}
+
+.add-entry-button {
+  background-color:  #f6f4f4 !important;
+  transition: 0.2s;
+  width: max-content !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px !important;
+}
+
+.add-entry-button:hover {
+  background-color: rgb(206, 253, 206) !important;
+}
+
+.education .content-wrapper button,
+.experience .content-wrapper button {
+  background-color: #f8f8f8;
+  height: 30px;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.education .content-wrapper button img,
+.experience .content-wrapper button img{
+  display: none;
+}
+
+.education .content-wrapper button:hover,
+.experience .content-wrapper button:hover{
+  background-color: #ecedff;
+}
+
+.education .content-wrapper .delete-entry img,
+.experience .content-wrapper .delete-entry img {
+  display: block;
+}
+
+.education .content-wrapper .delete-entry,
+.experience .content-wrapper .delete-entry {
+  justify-content: center !important;
+  width: max-content !important;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education .content-wrapper .delete-entry:hover, 
+.experience .content-wrapper .delete-entry:hover {
+  background-color: rgb(250, 190, 190);
+}
+
+
+.content-wrapper .spoiler.opened {
+  border: solid 1px rgb(193, 193, 193);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.education-entry-form,
+.experience-entry-form {
+  padding: 0px 10px;
+}
+
+.clear-resume {
+  transition: 0.3s;
+  font-size: 14px !important;
+}
+
+.clear-resume:hover {
+  background-color: rgb(227, 80, 80);
+  color: white
+}

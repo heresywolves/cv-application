@@ -1,5 +1,6 @@
 import Spoiler from "./Spoiler"
 import PropTypes from 'prop-types';
+import crossImg from "../assets/cross.svg"
 
 function EducationInput(props) {
   return (
@@ -56,7 +57,7 @@ function EducationInput(props) {
                         <button 
                           className={"delete-entry " + item.id} 
                           onClick={props.handleDeleteEducation}
-                        >Remove</button>
+                        ><img src={crossImg} width={20} alt="" /> Remove</button>
                       </div>
                     }
                   />
@@ -64,7 +65,7 @@ function EducationInput(props) {
               }
               )
               }
-              <button onClick={props.handleAddEducation}>+ Add</button>
+              <button className="add-entry-button" onClick={props.handleAddEducation}>+ Add</button>
             </>
           }
           />

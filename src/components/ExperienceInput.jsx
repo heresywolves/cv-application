@@ -1,5 +1,6 @@
 import Spoiler from "./Spoiler"
 import PropTypes from 'prop-types';
+import crossImg from "../assets/cross.svg"
 
 function ExperienceInput(props) {
   return (
@@ -54,7 +55,8 @@ function ExperienceInput(props) {
                             id={'location-' + item.id}
                           />
                           <label htmlFor={'description-' + item.id}>Description</label>
-                          <input 
+                          <textarea
+                            rows={6}
                             value={item.description} 
                             onChange={props.handleExperienceChange}
                             type="text" 
@@ -63,7 +65,7 @@ function ExperienceInput(props) {
                           <button 
                             className={"delete-entry " + item.id} 
                             onClick={props.handleDeleteExperience}
-                          >Remove</button>
+                          ><img src={crossImg} width={20} alt="" />Remove</button>
                         </div>
                       }
                       />
@@ -71,7 +73,7 @@ function ExperienceInput(props) {
                   }
                 )
               }
-            <button onClick={props.handleAddExperience}>+ Add</button>
+            <button className="add-entry-button" onClick={props.handleAddExperience}>+ Add</button>
           </>    
         }  
       />
