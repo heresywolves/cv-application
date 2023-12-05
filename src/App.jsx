@@ -5,6 +5,7 @@ import SummaryAndSkillsInput from './components/SummaryAndSkillsInput';
 import EducationInput from './components/EducationInput';
 import ExperienceInput from './components/ExperienceInput';
 import PreviewPortfolio from './components/PreviewPortfolio';
+import html2pdf from 'html2pdf.js';
 
 function App() {
   
@@ -197,6 +198,7 @@ function App() {
           />
           <button className='clear-resume' onClick={handleClearAll}>Clear All</button>
         </form>
+        <button className='export-button' onClick={downloadPDF}>Export PDF</button>
       </div>
       <PreviewPortfolio
         name={name}
@@ -210,6 +212,16 @@ function App() {
       />
     </div>
   )
+}
+
+const downloadPDF = () => {
+  const element = document.querySelector('.preview-container');
+  html2pdf(element, {
+    printBackground: true,
+    margin: 0,
+    html2canvas: {scale: 2},
+    jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'},
+  });
 }
 
 

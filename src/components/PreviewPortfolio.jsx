@@ -61,14 +61,10 @@ function PreviewPortfolio(props) {
 
 PreviewPortfolio.propTypes = {
   name: PropTypes.string.isRequired,
-  setName: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
-  setEmail: PropTypes.func.isRequired,
   phone: PropTypes.string.isRequired,
-  setPhone: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
-  setSummary: PropTypes.func.isRequired,
   skills: PropTypes.arrayOf(
     PropTypes.string.isRequired
   ).isRequired,
