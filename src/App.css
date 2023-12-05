@@ -11,7 +11,7 @@
   height: 100vh;
   background-color: rgb(248, 248, 248);
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(600px, 2fr);
+  grid-template-columns: minmax(300px, 1fr) 700px;
   padding: 30px;
   gap: 20px;
 }
@@ -25,3 +25,116 @@
   display: block;
   width: 100%;
 }
+
+
+/* Preview */
+
+.preview-container {
+  font-size: 12px;
+  color: rgb(24, 24, 24);
+  /* A3 paper aspect ratio: 700px * 1.414 = 989px */
+  height: 989px;
+}
+
+.preview-container img {
+  width: 15px;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+}
+
+.preview-container .phone img {
+  top: 4px;
+  left: 2px;
+}
+
+.preview-personal-info {
+  background-color: #0e374e;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
+
+.preview-personal-info .phone, .preview-personal-info .email {
+  display: inline-block;
+}
+
+.preview-container .phone {
+  margin-left: 25px;
+}
+
+.preview-container .preview-personal-info p {
+  margin-top: 6px;
+}
+
+.preview-container h2 {
+  text-align: center;
+  background-color: #f4f4f4;
+  color: #0e374e;
+  padding: 5px;
+  border-radius: 2px;
+  margin-bottom: 20px ;
+  margin-top: 20px;
+}
+
+.preview-summary, .preview-skills, .preview-education, .preview-experience {
+  padding: 0px 30px;
+}
+
+.preview-skills .skill-entries {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.preview-skills .skill-entries p {
+  background-color:#fbfbfb;
+  padding: 2px 10px;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+
+.education-entry {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.education-entry .school-name-preview {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+.experience-entry {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.preview-experience-description {
+  grid-column: 2;
+}
+
+.preview-company-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.preview-position {
+  font-style: italic;
+}
+
+
+/* Form */
+
+.form-container {
+  height: max-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+

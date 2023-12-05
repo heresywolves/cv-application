@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
+import addressIcon from '../assets/address.svg'
+import phoneIcon from '../assets/phone.svg'
+import emailIcon from '../assets/email.svg'
 
 function PreviewPortfolio(props) {
   return (
     <div className="preview-container">
       <div className="preview-personal-info">
         <h1>{props.name}</h1>
-        <p>Email: {props.email}</p>
-        <p>Phone: {props.phone}</p>
-        <p>Address: {props.address}</p>
+        <p className='email'><img src={emailIcon} alt="" /> {props.email}</p>
+        <p className='phone'><img src={phoneIcon} alt="" /> {props.phone}</p>
+        <p><img src={addressIcon} alt="" />{props.address}</p>
       </div>
       <div className="preview-summary">
         {props.summary != '' && <h2>Summary</h2>}
@@ -15,9 +18,11 @@ function PreviewPortfolio(props) {
       </div>
       <div className="preview-skills">
         {props.skills.length > 0 && <h2>Skills</h2>}
-        {props.skills.map((skill, index) => {
-          return (<p key={index}>{skill}</p>)
-        })}
+        <div className='skill-entries'>
+          {props.skills.map((skill, index) => {
+            return (<p key={index}>{skill}</p>)
+          })}
+        </div>
       </div>
       <div className="preview-education">
         {props.educationList.length > 0 && <h2>Education</h2>}
@@ -26,8 +31,8 @@ function PreviewPortfolio(props) {
             return (
               <div className="education-entry" key={item.id}>
                 <p>{item.start + ' - ' + item.end}</p>
+                <p className='school-name-preview'>{item.school}</p>
                 <p>{item.location}</p>
-                <p>{item.school}</p>
                 <p>{item.degree}</p>
               </div>
             )
@@ -40,11 +45,11 @@ function PreviewPortfolio(props) {
           (item) => {
             return (
               <div className="experience-entry" key={item.id}>
-                <p>{item.company}</p>
-                <p>{item.position}</p>
                 <p>{item.start + " - " + item.end}</p>
+                <p className='preview-company-name'>{item.company}</p>
                 <p>{item.location}</p>
-                <p>{item.description}</p>
+                <p className='preview-position'>{item.position}</p>
+                <p className='preview-experience-description'>{item.description}</p>
               </div>
             )
           }
