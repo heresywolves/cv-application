@@ -26,7 +26,7 @@ function ExperienceInput(props) {
                             type="text" 
                             id={'company-' + item.id}
                           />
-                          <label htmlFor={'position-' + item.id}>Company Name</label>
+                          <label htmlFor={'position-' + item.id}>Position</label>
                           <input 
                             value={item.position} 
                             onChange={props.handleExperienceChange}
